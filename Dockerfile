@@ -21,29 +21,4 @@ RUN apk add --no-cache python3 && \
     apk del .build-deps && \
     rm -r /root/.cache
 
-# FROM python:3.6-alpine
-
-# COPY requirements.pip /tmp/requirements.pip
-
-# RUN pip3 install -U pip \
-#     && pip3 install -r /tmp/requirements.pip \
-#     && rm -r /root/.cache
-
-# RUN apk add --no-cache openssh git curl python3 ca-certificates gzip && \
-#     python3 -m ensurepip && \
-#     rm -r /usr/lib/python*/ensurepip && \
-#     pip3 install -r /tmp/requirements.pip && \
-#     rm -r /root/.cache
-
-# ENTRYPOINT ["twine"]
-# CMD [ "ansible-playbook" ]
-
-ENV WORKSPACE /workspace
-
-RUN mkdir $WORKSPACE
-
-VOLUME $WORKSPACE
-
-WORKDIR $WORKSPACE
-
 ENTRYPOINT [ "ansible-lint" ]
