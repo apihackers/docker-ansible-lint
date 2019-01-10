@@ -21,4 +21,6 @@ RUN apk add --no-cache python3 && \
     apk del .build-deps && \
     rm -r /root/.cache
 
-ENTRYPOINT [ "ansible-lint" ]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT [ "/entrypoint.sh" ]
